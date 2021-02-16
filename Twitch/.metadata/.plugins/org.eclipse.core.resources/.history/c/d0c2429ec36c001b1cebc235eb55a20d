@@ -1,0 +1,195 @@
+package br.com.academia.gui;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
+
+import br.com.academia.model.Aluno;
+
+public class FrameTela {
+	
+	public void criarTela() {
+		
+		// *** Tela Principal ***\\
+		JFrame telaApp = new JFrame();
+		telaApp.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		telaApp.setSize(500, 500);
+		telaApp.setTitle("Calcular IMC e NCD");
+		telaApp.setLayout(null);
+		telaApp.setLocationRelativeTo(null);
+		
+		// *** Criações de Label e TextFild ***\\
+		
+		// *** Nome ***\\
+		JLabel labelNome = new JLabel();
+		labelNome.setText("Nome:");
+		labelNome.setBounds(10, 10, 80, 30);
+		// TextField ***
+		JTextField textNome = new JTextField();
+		textNome.setBounds(50, 16, 190, 20);
+		
+		
+		// *** Sexo ***\\
+		JLabel labelSexo = new JLabel();
+		labelSexo.setText("Sexo:");
+		labelSexo.setBounds(10, 50, 220, 30);
+		// RadioButton ***
+		JRadioButton radMasculino = new JRadioButton("Masculino");
+		radMasculino.setLocation(48, 56);
+		radMasculino.setSize(95, 20);
+		
+		JRadioButton radFeminino = new JRadioButton("Feminino");
+		radFeminino.setLocation(150, 56);
+		radFeminino.setSize(95, 20);
+		
+		ButtonGroup buttonGroup = new ButtonGroup();
+		buttonGroup.add(radFeminino);
+		buttonGroup.add(radMasculino);
+		
+		
+		
+		// *** Data de Nascimento ***\\
+		JLabel labelDataNasc = new JLabel();
+		labelDataNasc.setText("Data de Nascimento:");
+		labelDataNasc.setBounds(10, 90, 120, 30 );
+		
+		// TextField ***
+		JTextField  textDataNasc = new JTextField();
+		textDataNasc.setBounds(130, 96, 90, 20);
+		
+		
+		// *** Peso ***\\
+		JLabel labelPeso = new JLabel();
+		labelPeso.setText("Peso:");
+		labelPeso.setBounds(10, 130, 80, 30);
+		// TextField ***
+		JTextField textPeso = new JTextField();
+		textPeso.setBounds(45, 136, 50, 20);
+		
+		
+		// *** Altura ***\\
+		JLabel labelAltura = new JLabel();
+		labelAltura.setText("Altura:");
+		labelAltura.setBounds(10, 170, 80, 30);
+		// TextField ***
+		JTextField textAltura = new JTextField();
+		textAltura.setBounds(50, 176, 50, 20);
+		
+		
+		// *** Atividade Física ***\\
+		JLabel labelAtividadeFisica = new JLabel();
+		labelAtividadeFisica.setText("Atividade Física:");
+		labelAtividadeFisica.setBounds(10, 215, 170, 30);
+		// ComboBox ***
+		String[] selecaoAtividadeFisica = {"Nenhuma Atividade", "Leve", "Moderada", "Intensa"};
+		JComboBox<String> listaDeAtividadeFisica = new JComboBox<String>(selecaoAtividadeFisica);
+		listaDeAtividadeFisica.setBounds(108, 220, 140, 20);
+		
+		// *** IMC ***\\
+		JLabel labelImc	= new JLabel();
+		labelImc.setText("Seu IMC é:");
+		labelImc.setBounds(10, 260, 110, 30);
+		// Exibir ***
+		JLabel labelStatusImc = new JLabel();
+		labelStatusImc.setBounds(210, 260, 190, 30);
+		// Resultado ***
+		JLabel labelResultadoImc = new JLabel();
+		labelResultadoImc.setBounds(76, 260, 180, 30);
+		
+		
+		// *** NCD ***\\
+		JLabel labelNcd = new JLabel();
+		labelNcd.setText("Seu NCD é:");
+		labelNcd.setBounds(10, 310, 110, 30);
+		// Exibir ***
+		JLabel labelResultadoNcd = new JLabel();
+		labelResultadoNcd.setBounds(76, 310, 200, 30);
+		
+		
+		// *** Botões ***\\
+		
+		// *** Calcular ***\\
+		JButton buttonCalcular = new JButton();
+		buttonCalcular.setText("Calcular");
+		buttonCalcular.setBounds(10, 400, 160, 30);
+		
+		// *** Limpar ***\\
+		JButton buttonLimpar = new JButton();
+		buttonLimpar.setText("Limpar");
+		buttonLimpar.setBounds(220, 400, 160, 30);
+		
+		
+		
+		telaApp.getContentPane().add(labelNome);
+		telaApp.getContentPane().add(labelSexo);
+		telaApp.getContentPane().add(labelDataNasc);
+		telaApp.getContentPane().add(labelPeso);
+		telaApp.getContentPane().add(labelAltura);
+		telaApp.getContentPane().add(labelAtividadeFisica);
+		telaApp.getContentPane().add(labelStatusImc);
+		telaApp.getContentPane().add(labelNcd);
+		telaApp.getContentPane().add(labelImc);
+		telaApp.getContentPane().add(textNome);
+		telaApp.getContentPane().add(textDataNasc);
+		telaApp.getContentPane().add(textPeso);
+		telaApp.getContentPane().add(textAltura);
+		telaApp.getContentPane().add(radMasculino);
+		telaApp.getContentPane().add(radFeminino);
+		telaApp.getContentPane().add(listaDeAtividadeFisica);
+		telaApp.getContentPane().add(buttonCalcular);
+		telaApp.getContentPane().add(buttonLimpar);
+		telaApp.getContentPane().add(labelResultadoImc);
+		telaApp.getContentPane().add(labelResultadoNcd);
+		
+		
+		telaApp.setVisible(true);
+		
+		buttonCalcular.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				Aluno cliente = new Aluno();
+				
+				cliente.setSexo(radMasculino.getText());
+				cliente.setSexo(radFeminino.getText());
+				
+				cliente.setSexo(radMasculino.isSelected()?"Masculino":"Feminino");
+				
+				cliente.setAltura(Double.parseDouble(textAltura.getText()));
+				cliente.setPeso(Double.parseDouble(textPeso.getText()));
+				
+				
+				cliente.setNivelDeAtividade(listaDeAtividadeFisica.getSelectedItem().toString());
+				cliente.setDataNascimento(textDataNasc.getText());
+				
+				labelResultadoImc.setText(String.valueOf(cliente.getImc()));
+				labelResultadoNcd.setText(String.valueOf(cliente.getNcd()));
+				labelStatusImc.setText(cliente.getStatusImc());
+			}
+		});
+		
+		buttonLimpar.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+
+				textNome.setText(null);
+				buttonGroup.clearSelection();
+				textDataNasc.setText(null);
+				textPeso.setText(null);
+				textAltura.setText(null);
+				listaDeAtividadeFisica.setSelectedIndex(0);
+				labelResultadoImc.setText(null);
+				labelResultadoNcd.setText(null);
+				labelStatusImc.setText(null);
+			}
+		});
+		
+	}
+}

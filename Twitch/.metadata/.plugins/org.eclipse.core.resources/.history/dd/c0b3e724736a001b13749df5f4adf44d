@@ -1,0 +1,45 @@
+package br.com.academia;
+
+import java.time.LocalDate;
+
+import br.com.academia.model.Aluno;
+import javax.swing.JOptionPane;
+
+public class App {
+ 
+	public static void main(String[] args) {
+		
+		String nome;
+		
+		Integer idade = 0;	
+		LocalDate dataNascimento = LocalDate.of(2004, 01, 25);
+		Double pesoUsuario = Double.parseDouble(JOptionPane.showInputDialog("Informe o seu peso:"));
+		
+		//Nome
+		Aluno brayan = new Aluno();
+		brayan.setNome("Brayan");
+		nome = brayan.getNome();
+		
+		//data de nascimento
+		brayan.setDataNascimento(dataNascimento);
+		idade = brayan.getIdade();
+		
+		//altura
+		brayan.setAltura(1.78);
+		double Altura = brayan.getAltura();
+		
+		//peso
+		brayan.setPeso(pesoUsuario);
+		
+		//Sexo
+		brayan.
+		
+		System.out.println(nome);
+		System.out.println(idade);
+		JOptionPane.showMessageDialog(null, nome + idade);
+		System.out.println(pesoUsuario);
+		System.out.println(Altura);
+		
+	}
+	
+}

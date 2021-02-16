@@ -1,0 +1,34 @@
+package br.com.academia;
+
+import java.time.LocalDate;
+
+import br.com.academia.model.Aluno;
+import javax.swing.JOptionPane;
+
+public class App {
+ 
+	public static void main(String[] args) {
+		
+		String nome;
+		Integer idade = 0;	
+		LocalDate dataNascimento = LocalDate.of(2004, 01, 25);
+		
+		
+		//Nome
+		Aluno nata = new Aluno();
+		nata.setNome("Brayan");
+		nome = nata.getNome();
+		
+		//data de nascimento
+		nata.setDataNascimento(dataNascimento);
+		idade = nata.getIdade();
+		
+		
+		
+		System.out.println(nome);
+		System.out.println(idade);
+		
+		JOptionPane.showMessageDialog(null, nome);
+	}
+	
+}

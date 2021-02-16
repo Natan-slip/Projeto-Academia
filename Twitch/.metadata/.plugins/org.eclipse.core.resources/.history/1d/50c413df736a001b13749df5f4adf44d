@@ -1,0 +1,123 @@
+package br.com.academia.model;
+
+import java.time.LocalDate;
+import java.time.Period;
+
+public class Aluno {
+
+	private String nome;
+	private LocalDate dataNascimento;
+	private double altura;
+	private double peso;
+	private String sexo;
+	private String nivelAtividade;
+	
+	// *** Nome
+	public void setNome (String nome) {
+		this.nome = nome;
+	}
+	
+	public String getNome () {
+		return this.nome;
+	}
+	
+	
+	// *** Data
+	public void setDataNascimento(LocalDate dataNascimento) {
+		
+		this.dataNascimento = dataNascimento;
+	}
+	
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
+	
+	public int getIdade() {
+		LocalDate hoje = LocalDate.now();
+		Period periodo = Period.between(this.dataNascimento, hoje);
+		return periodo.getYears();
+		
+	}
+
+	// *** Altura
+	public void setAltura (double altura) {
+		this.altura = altura;
+	}
+	
+	public double getAltura () {
+		return this.altura = altura;
+	}
+	
+	
+	// *** Peso
+	public void setPeso (double peso) {
+		this.peso = peso;
+	}
+	
+	public double getPeso () {
+		return this.peso = peso;
+	}
+	
+	//*** Sexo
+	public void setSexo (String sexo) {
+		if (sexo.equals("masculino") || sexo.equals("feminino")) {
+			this.sexo = sexo;
+			}
+			else {
+				System.out.println("O tipo deve ser Corrente ou Poupança");
+			}
+	}
+	public String getSexo () {
+		return this.sexo = sexo;
+	}
+	
+	
+	// *** Calculo dos homens
+	public double calculoHomensInicio () {
+		return 15.3 * this.peso + 679;
+	}
+	
+	public double calculoHomensMeio () {
+		return 11.6 * this.peso + 879;
+	}
+	
+	public double calculoHomensFim () {
+		return 13.5 * this.peso + 487;
+	}
+	
+	// *** Calculo das Mulheres
+	public double calculoMulheresInicio () {
+		return 14.7 * this.peso + 496;
+	}
+	
+	public double calculoMulheresMeio () {
+		return 8.7 * this.peso + 829;
+	}
+	
+	public double calculoMulheresFim () {
+		return 10.5 * this.peso + 596;
+	}
+	
+	
+	// *** Calculos Imc
+	public double getImc() {
+		return this.peso / Math.pow(altura, 2);
+	}
+	
+	public String getStatusImc() {
+		if (this.getImc() <= 18.6) {
+			return "Abaixo do peso";
+		} else if (this.getImc() > 18.6 && this.getImc() < 25 ) {
+			return "Peso ideal (Parabéns)";
+		} else if (this.getImc() >= 25 && this.getImc() < 30) {
+			return "Levemente acima do peso";
+		} else if (this.getImc() >= 30 && this.getImc() < 35) {
+			return "Obesidade grau I";
+		} else if (this.getImc() >= 35 && this.getImc() <= 40) {
+			return "Obesidade grau II (Severa)";
+		} else {
+			return "Obesidade III (Morbida)";
+		}
+	}
+	
+  }

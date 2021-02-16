@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+C:\Users\slipk\Projeto-Academia\Twitch\.metadata\.plugins\org.eclipse.jdt.core
+4088832729.index
+3105325953.index
